@@ -2,7 +2,7 @@ import * as fs from 'fs'
 import * as yaml from 'js-yaml'
 import { defaultDict } from './utils'
 import { Command } from 'commander'
-import { Reading } from '../schemas/raw_types'
+import { SubReading } from '../schemas/raw_types'
 import { ReadingType } from '../schemas/types'
 import path from 'path'
 
@@ -60,7 +60,7 @@ const getSectionType = (line: string): SectionType | null => {
 // Function to split text into sections based on titles
 function splitIntoSections(text: string) {
     const lines = text.split('\n').filter((line) => line.trim() !== '')
-    const readings = defaultDict(() => [] as Reading[])
+    const readings = defaultDict(() => [] as SubReading[])
 
     let currentTitle: string | null = null
     let currentText: string[] = []
