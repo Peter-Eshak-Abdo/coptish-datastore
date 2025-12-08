@@ -13,7 +13,7 @@ class MultiLingualVerseSplitter extends MultiLingualProcessor {
         const inputData = yaml.load(fs.readFileSync(filepath, 'utf-8')) as Root
         if (!isReadingT(inputData)) return
 
-        const transformedText = this.transformText(inputData.text)
+        const transformedText = this.transformText(inputData.text ?? [])
 
         const outputData = { ...inputData, text: transformedText }
         fs.writeFileSync(filepath, yaml.dump(outputData, { lineWidth: 9999 }), 'utf-8')
@@ -31,7 +31,8 @@ program //
 
 const [inputFile] = program.args
 if (!fs.existsSync(inputFile)) {
-    program.error(`input file does not exist "${inputFile}"`)
+  console.error(`input file does not exist "${inputFile}"`)
+  process.exit(1)
 }
 
 const splitter = new MultiLingualVerseSplitter()
@@ -53,5 +54,6 @@ for (const file of files) {
 progressBar.stop()
 
 if (errors.length > 0) {
-    program.error(errors.join('/n'))
+  console.error(errors.join('/n'))
+  process.exit(1)
 }

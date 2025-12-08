@@ -1,9 +1,9 @@
 import { google } from 'googleapis'
 import { OAuth2Client } from 'google-auth-library'
 import * as path from 'path'
-import * as fs from 'fs-extra'
+import * as fs from 'fs'
 import * as http from 'http'
-import * as url from 'url'
+import { URL } from 'url'
 import * as open from 'open'
 
 const CREDENTIALS_PATH = path.join(__dirname, 'credentials.json')
@@ -40,8 +40,9 @@ export async function authorize(): Promise<OAuth2Client> {
         return new Promise<OAuth2Client>((resolve, reject) => {
             const server = http.createServer(async (req, res) => {
                 if (req.url && req.url.startsWith('/?')) {
-                    const query = url.parse(req.url, true).query
-                    const code = query.code as string
+                    const address = server.address()
+                    const parsedUrl = new URL(req.url, `http://localhost:${typeof address === 'string' ? 0 : address?.port}`)
+                    const code = parsedUrl.searchParams.get('code')
 
                     if (code) {
                         res.writeHead(200, { 'Content-Type': 'text/plain' })
@@ -65,7 +66,7 @@ export async function authorize(): Promise<OAuth2Client> {
                     } else {
                         res.writeHead(400, { 'Content-Type': 'text/plain' })
                         res.end('Error: No code found in the query parameters.')
-                        server.close()
+                        server.close(() => {})
                         reject(new Error('No code found in the query parameters.'))
                     }
                 }
@@ -73,8 +74,8 @@ export async function authorize(): Promise<OAuth2Client> {
 
             // Start the server and open the authorization URL
             server.listen(3000, () => {
-                // Open the URL in the default browser
-                open.default(authUrl).catch((err) => {
+                // Open the URL in the default browser. The 'open' module is imported as 'open'
+                open.default(authUrl).catch((err: any) => {
                     console.error('Failed to open browser:', err)
                     console.log('Please open the following URL manually:', authUrl)
                 })

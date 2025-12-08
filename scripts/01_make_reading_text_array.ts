@@ -24,7 +24,8 @@ program //
 
 const [inputFile] = program.args
 if (!fs.existsSync(inputFile)) {
-    program.error(`input file does not exist "${inputFile}"`)
+    console.error(`input file does not exist "${inputFile}"`)
+    process.exit(1)
 }
 
 const merger = new MultiLingualVerseMerger()
@@ -44,7 +45,7 @@ for (const file of files) {
     }
 }
 progressBar.stop()
-
 if (errors.length > 0) {
-    program.error(errors.join('/n'))
+    console.error(errors.join('\n'))
+    process.exit(1)
 }

@@ -60,7 +60,8 @@ program
 const { languageCode } = program.opts()
 const [inputFile] = program.args
 if (!fs.existsSync(inputFile)) {
-    program.error(`input file does not exist "${inputFile}"`)
+  console.error(`input file does not exist "${inputFile}"`)
+  process.exit(1)
 }
 
 const copier = new MultiLingualCopier()

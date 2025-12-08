@@ -124,10 +124,12 @@ program //
 
 const [inputFile] = program.args
 if (!fs.existsSync(inputFile)) {
-    program.error(`input file does not exist "${inputFile}"`)
+  console.error(`input file does not exist "${inputFile}"`)
+  process.exit(1)
 }
 if (path.extname(inputFile) !== '.txt') {
-    program.error(`input file is not a text file "${inputFile}"`)
+  console.error(`input file is not a text file "${inputFile}"`)
+  process.exit(1)
 }
 
 convertRtfToYaml(inputFile)

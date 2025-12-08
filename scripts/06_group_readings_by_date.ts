@@ -3,7 +3,12 @@ import * as fs from 'fs/promises'
 import * as path from 'path'
 import * as yaml from 'js-yaml'
 import { existsSync } from 'fs'
-import { Reading as RawReading, ReadingV2 as RawReadingV2 } from '../schemas/raw_types'
+import { Reading as RawReading } from '../schemas/raw_types'
+
+type RawReadingV2 = {
+    title: { english: string }
+    [key: string]: any
+}
 
 const folders = [
     'acts-of-the-apostles',
@@ -65,7 +70,8 @@ program
 
 const [inputFile] = program.args
 if (!existsSync(inputFile)) {
-    program.error(`input file does not exist "${inputFile}"`)
+  console.error(`input file does not exist "${inputFile}"`)
+  process.exit(1)
 }
 
 try {

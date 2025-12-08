@@ -168,7 +168,7 @@ async function populatePrayerSheet(sheets: sheets_v4.Sheets, spreadsheetId: stri
 
         if (section.type === 'info') {
             const infoSection = section as InfoSection
-            values.push(['Text', infoSection.text.english])
+            values.push(['Text', infoSection.text.english || ''])
             rowIndex++
         } else if (section.type === 'verses') {
             const versesSection = section as VersesSection

@@ -77,7 +77,8 @@ program //
 
 const [inputFile] = program.args
 if (!existsSync(inputFile)) {
-    program.error(`input file does not exist "${inputFile}"`)
+  console.error(`input file does not exist "${inputFile}"`)
+  process.exit(1)
 }
 
 try {

@@ -85,7 +85,8 @@ program //
 
 const [inputFile] = program.args
 if (!fs.existsSync(inputFile)) {
-    program.error(`Input file or directory does not exist: "${inputFile}"`)
+  console.error(`Input file or directory does not exist: "${inputFile}"`)
+  process.exit(1)
 }
 
 const typeAdder = new TypeFieldAdder()
@@ -109,7 +110,8 @@ progressBar.stop()
 
 if (errors.length > 0) {
     console.error('\nMigration completed with errors:')
-    program.error(errors.join('\n'))
+    console.error(errors.join('\n'))
+    process.exit(1)
 } else {
     console.log('\nMigration completed successfully for all files!')
 }

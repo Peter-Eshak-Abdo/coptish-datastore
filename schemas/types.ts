@@ -86,6 +86,7 @@ export interface CompoundPrayerSection extends AbstractPrayerSection {
 export interface Reading extends Partial<Record<ReadingType, SubReading[]>> {
     title: MultiLingualText
     type: 'reading'
+    text?: MultiLingualText[]
 }
 
 export interface SubReading {

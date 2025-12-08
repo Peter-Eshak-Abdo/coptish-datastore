@@ -1,5 +1,5 @@
-import { Ajv } from 'ajv'
 import * as fs from 'fs'
+import Ajv from 'ajv'
 import * as yaml from 'js-yaml'
 import { Command } from 'commander'
 import schema from '../schemas/raw_schema.json'
@@ -17,7 +17,8 @@ program
 
 const [inputFile] = program.args
 if (!fs.existsSync(inputFile)) {
-    program.error(`input file does not exist "${inputFile}"`)
+  console.error(`input file does not exist "${inputFile}"`)
+  process.exit(1)
 }
 
 const ajv = new Ajv()
