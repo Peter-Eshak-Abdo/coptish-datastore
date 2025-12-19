@@ -1,93 +1,48 @@
-title:
-  english: '2024-05-04'
 acts-of-the-apostles:
   - title:
       english: ''
       arabic: ''
-    text:
-      english: []
-      arabic: []
-      coptic: []
-      coptic_english: []
-      coptic_arabic: []
+    text: []
 catholic-epistle:
   - title:
       english: ''
       arabic: ''
-    text:
-      english: []
-      arabic: []
-      coptic: []
-      coptic_english: []
-      coptic_arabic: []
+    text: []
 liturgy-gospel:
   - title:
       english: ''
       arabic: ''
-    text:
-      english: []
-      arabic: []
-      coptic: []
-      coptic_english: []
-      coptic_arabic: []
+    text: []
 liturgy-psalm:
   - title:
       english: ''
       arabic: ''
-    text:
-      english: []
-      arabic: []
-      coptic: []
-      coptic_english: []
-      coptic_arabic: []
+    text: []
 matins-gospel:
   - title:
       english: ''
       arabic: ''
-    text:
-      english: []
-      arabic: []
-      coptic: []
-      coptic_english: []
-      coptic_arabic: []
+    text: []
 matins-psalm:
   - title:
       english: ''
       arabic: ''
-    text:
-      english: []
-      arabic: []
-      coptic: []
-      coptic_english: []
-      coptic_arabic: []
+    text: []
 pauline-epistle:
   - title:
       english: ''
       arabic: ''
-    text:
-      english: []
-      arabic: []
-      coptic: []
-      coptic_english: []
-      coptic_arabic: []
+    text: []
 vespers-gospel:
   - title:
       english: ''
       arabic: ''
-    text:
-      english: []
-      arabic: []
-      coptic: []
-      coptic_english: []
-      coptic_arabic: []
+    text: []
 vespers-psalm:
   - title:
       english: ''
       arabic: ''
-    text:
-      english: []
-      arabic: []
-      coptic: []
-      coptic_english: []
-      coptic_arabic: []
+    text: []
 type: reading
+title:
+  english: '2024-05-04'
